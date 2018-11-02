@@ -1,0 +1,2 @@
+//array.sort() - Modifica o array ordenando os elementos por ordem crescente
+//array.splice(startIndex, deleteElements, ...itemsAdd) - Modifica o array principal podendo adicionar, remover e adicionar/remover ao mesmo tempo
