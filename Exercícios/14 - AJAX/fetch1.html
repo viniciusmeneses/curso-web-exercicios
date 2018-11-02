@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        const url = 'dados/estados.json'
+        //o fetch retorna uma promise que será resolvida ou rejeitada quando
+        //a requisição finalizar
+
+        //quando a promise é resolvida, é enviado a resposta por parâmetro,
+        //para pegarmos o conteúdo da resposta, devemos chamar resp.json() para
+        //convertê-la e ser possivel acessar
+
+        //resp.json() - retorna uma outra promise que vai parsear a resposta para JSON
+        //podemos encadear o then com os returns das funções de callback
+        fetch(url).then(resp => resp.json()).then(estados => {
+            const itens = estados.reduce((html, estado) => html + `<li>${estado.nome}</li>`, '')
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+        })
+    </script>
+</body>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        input[type=file] {
+            display: flex;
+            margin: 10px;
+            padding: 40px;
+            font-size: 40px;
+            background: crimson;
+            border-radius: 20px;
+        }
+        .progresso {
+            height: 50px;
+            width: 700px;
+            padding: 0px !important;
+            /* background-color: #000000 !important; */
+        }
+        .progresso div {
+            z-index: 10000;
+            background-color: crimson !important;
+            height: 100%;
+            width: 0%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <input type="file" name="arquivo" />
+    <div class="progresso">
+        <div></div>
+    </div>
+
+    <script>
+        function ajaxUpload(config) {
+            const xhr = new XMLHttpRequest()
+
+            if (xhr.upload) {
+                //Monitorar o progresso do upload
+                xhr.upload.onprogress = e => {
+                    const atual = e.loaded
+                    const total = e.total
+                    const percentual = Math.floor(atual / total * 100)
+                    config.progresso({ atual, total, percentual})
+                }
+            }
+
+            xhr.open('POST', config.url, true)
+            xhr.send(config.formData)
+        }
+
+        document.querySelector('input[type=file]').onchange = e => {
+            const formData = new FormData()
+            //criando um formData vazio e adicionando nele
+            //o name do input (e.target = input) e o primeiro arquivo adicionado
+            formData.append(e.target.name, e.target.files[0])
+
+            ajaxUpload({
+                url: 'upload',
+                formData,
+                progresso(dados) {
+                    const progresso = document.querySelector('.progresso div')
+                    progresso.style.width = `${dados.percentual}%`
+                }
+            })
+        }
+    </script>
+</body>

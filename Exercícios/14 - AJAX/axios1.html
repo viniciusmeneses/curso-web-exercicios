@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        const url = 'dados/estados.json'
+        //No fetch, precisamos primeiro resolver a reposta com resp.json()
+        //aguardar a promesa ser cumprida para receber os dados da resposta
+
+        //No axios isso é feito automaticamente quando é cumprido a primeira promessa,
+        //sendo assim resp já possui os dados da resposta dentro de resp.data automaticamente convertido em objeto
+        axios(url).then(resp => {
+            const itens = resp.data.reduce((html, estado) => html + `<li>${estado.nome}</li>`, '')
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+        })
+    </script>
+</body>
