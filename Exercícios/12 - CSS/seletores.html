@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selectors</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        /* seletor universal (todos) */
+        /* * {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor classe */
+        /* .tag {
+            color: #ff0;
+            background-color: #f77;
+        } */
+        
+        /* seletor de ID */
+        /* #aprovados {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor de filho direto / descendente direto
+        Pega a div que é filho direto do elemento com id aninhado */
+        /* #aninhado > div {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor de filho indireto / descendente indireto
+        Pega qualquer elemento section que for descendente (estiver dentro) do elemento aninhado
+        mesmo não sendo filho direto */
+        /* #aninhado section {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor de irmão que vem diretamente ao lado
+        seleciona a tag ul que vier diretamente depois de um p */
+        /* p + ul {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor de irmão geral
+        seleciona a tag ol que possuir uma tag p como irmão mesmo não estando diretamente do lado */
+        /* p ~ ol {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor de propriedade */
+        /* [feira] {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor de propriedade com valor definido */
+        /* [feira=casa] {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor de propriedade
+        seleciona todos os elementos que tiverem atributo 
+        feira que possui valor escritorio dentre outros valores separados por espaços */
+        /* [feira~=escritorio] {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor de propriedade
+        seleciona todos os elementos que tiverem atributo 
+        feira que possui `sa` em qualquer parte do seu valor */
+        /* [feira*=sa] {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* seletor de filhos de algum tipo de elemento
+        seleciona o elemento que for o primeiro filho (nth-child(1)) e possuir tag span */
+        /* span:nth-child(1) {
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* odd: impar
+        even: par
+        dentro de uma section, seleciona todos os filhos ímpares */
+        /* section > :nth-child(odd) {
+            color: #ff0;
+            background-color: #f77;
+        }  */
+
+        /* seleciona segundo elemento dentro da section que seja do tipo span */
+        /* section > span:nth-of-type(2) {
+            color: #ff0;
+            background-color: #f77;
+        }  */
+    </style>
+</head>
+
+<body>
+    <div class='tag'>
+        <div class='tag'>
+            <p class='tag'>1</p>
+            <ul class='tag' feira='casa'>
+                <li>Arroz</li>
+                <li>Feijão</li>
+            </ul>
+            <ul class='tag' feira='escritorio empresa'>
+                <li>Café</li>
+                <li>Água</li>
+            </ul>
+            <ol id='aprovados' class='tag'>
+                <li>Maria</li>
+                <li>Pedro</li>
+                <li>Ana</li>
+            </ol>
+            <div id='aninhado' class='tag'>
+                <div class="tag">
+                    <section class='tag'>
+                        <span class='tag'>1</span>
+                        <p class='tag'>2</p>
+                        <span class='tag'>3</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

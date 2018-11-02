@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://specificity.keegan.st/ */
+        /*
+            Em linhas gerais o CSS é processado nessa ordem:
+
+            1. regra com !important (tentar evitar ao maximo)
+            2. seletores mais específicos
+            3. última regra processada (pela ordem de processamento) (em caso de empate)
+
+
+
+            ORDEM DE ESPECIFICIDADE DE SELETORES:
+
+            1. CSS Inline (diretamente na tag)
+            2. ID
+            3. Classe, Pseudo-Classe (:) e Atributo
+            4. Elemento e Pseudo-Elemento (::)
+
+
+            Caso não tenha !important, vai para regra do seletor mais específico
+            que vai depedender da sua ordem de especificidade.
+        */
+
+        body {
+            font-size:  40px;
+        }
+
+        div {
+            background-color: #00B;
+            color: #fff;
+        }
+        div[wm-cor] {
+            background-color: chocolate;
+        }
+        /* empate entre div[wm-cor] e div:hover de acordo com as regras
+        então vai valer o ultimo processado */
+        div:hover {
+            background-color: purple;
+        }
+        /*empate, ultimo processado...*/
+        div.estilo {
+            background-color: green;
+        }
+        #unico1, #unico2 {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="unico1" class="estilo" style="background-color: red;">
+        #unico1 vs .estilo vs inline
+    </div>
+    <div id="unico2" class="estilo">#unico2 vs .estilo</div>
+    <div class="estilo" wm-cor>.estilo vs wm-cor</div>
+    <div wm-cor>wm-cor</div>
+    <div class="estilo">.estilo</div>
+    <div>elemento</div>
+</body>
+
+</html>

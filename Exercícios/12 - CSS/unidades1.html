@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #01</title>
+    <style>
+        /* não muda de acordo com o tamanho da tela */
+        .unidades-absolutas {
+            position: absolute;
+            font-size: 40px;
+            padding: 20px;
+            border: solid 5px #222;
+            margin: 30px;
+            width: 4cm; /* pouco usado */
+            height: 20mm; /* pouco usado */
+            top: 150px; /* distancia do topo da pagina */
+            left: 200px; /* distancia da esquerda da pagina */ 
+        }
+
+        /* rem e em utilizamos para tamanho da fonte - beseado no tamanho da fonte atual */
+        /* vh, vw, vmin e vmax - baseado no tamanho da tela (viewport) */
+        .unidades-relativas {
+            position: absolute;
+            font-size: 4em; /* 4 vezes o tamanho da fonte atual */
+            padding: 5%;
+            border: solid 1vw #222; /* 100vw = 100% do comprimento da tela - 1vw = 1% */
+            margin: 0.8%;
+            width: 20vw;
+            height: 15vh;
+            bottom: 5%; /* elemento vai ficar a 5% de distancia da parte de baixo */
+            right: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="unidades-absolutas">Opa!</div>
+    <div class="unidades-relativas">Epa!</div>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Herança</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif; /*passado por herança */
+            font-size: 40px; /*passado por herança */
+            border: solid 3px red; /* não passado por herança */
+            padding: 50px; /*não passado por herança */
+        }
+
+        div {
+            /* quando queremos herdar uma propriedade que não é herdada para o filho por padrão
+            usamos o valor inherit para forçar */
+            border: inherit;
+            padding: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Herança</h1>
+    <div>Estou herdando
+        <span>
+            <p>
+                teste
+            </p>
+        </span>
+    </div>
+</body>
+
+</html>

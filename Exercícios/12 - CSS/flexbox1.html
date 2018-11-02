@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #01</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        .big {
+            font-size: 1.5em;
+        }
+        .flex-container {
+            width: 50%;
+            height: 200px;
+
+            /* para usarmos flexblox, utilizamos display: flex,
+            para transformar o elemente em um flex container */
+            /* por padrão o layout da flexbox vai ser de linha (row) */
+            display: flex; 
+            flex-direction: column; /* direçao do layout (main axis) row ou column */
+
+            /* row-reverse e column-reverse inverte a ordem dos flex items mantendo o eixo escolhido e invertendo a posição */
+            flex-direction: row-reverse;
+            flex-direction: row;
+
+            /* define como o flexbox irá se comportar quando os flex items forem mairo que o tamanho do elemento pai (overflow) */
+            /* por padrão, eles ignoram o tamanho do elemento pai e continua normalmente (nowrap)
+            se colocarmos wrap, acontecerá a quebra de linha para caber dentro do elemento pai */
+            flex-wrap: wrap;
+            flex-wrap: wrap-reverse; /*inverte a ordem da quebra de linha */
+
+            /* propriedade para definir a flex-direction e flex-wrap de uma só vez */
+            flex-flow: row wrap; 
+
+            /* ALINHAMENTO BASEANDO NO MAIN AXIS: */
+            justify-content: flex-start; /*justifica o conteúdo (flex items - elementos) a partir do main axis (row ou column) */
+            justify-content: flex-end;
+            justify-content: center; /* centraliza os flex-items com base no main axis */
+            justify-content: space-around; /*coloca espaço EM VOLTA DOS ELEMENTOS para que fiquem distrubuídos em TODO comprimento do flex container */
+            justify-content: space-between; /*coloca espaço somente ENTRE OS ELEMENTOS para que fiquem distribúidos em TODO inteiror do flex-container */
+
+            /*main axis é o valor definido no flex-direction (layout) */
+            /*cross axis é o valor contrário do definido (flex-direction: column - cross axis = row)*/
+
+            /* ALINHAMENTO BASEANDO NO CROSS AXIS: */
+            height: 400px;
+
+            align-items: stretch; /* valor padrão, estica os flex-items no cross axis */
+            align-items: baseline; /* alinha com base no tamanho da fonte */
+            align-items: flex-start; /* começo do cross-axis */
+            align-items: flex-end; 
+            align-items: center; /* centraliza no cross-axis */
+
+            /* ALINHAMENTO BASEADO NO CROSS AXIS QUANDO TEM MAIS DE UMA LINHA (WRAP): */
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+            align-content: space-around;
+            align-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel big">3</div>
+        <div class="tag nolabel">4</div>
+        <div class="tag nolabel">5</div>
+        <div class="tag nolabel">6</div>
+        <div class="tag nolabel">7</div>
+        <div class="tag nolabel">8</div>
+        <div class="tag nolabel">9</div>
+        <div class="tag nolabel">10</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

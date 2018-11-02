@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        .flex-container div {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        .flex-container div:nth-child(3) {
+            background-color: indianred;
+            /* podemos alterar a ordem os flex-items dentro de um flex-container */
+            /* por padrão, todos os flex-items tem order: 0 */
+            /* os elementos que possuem ordem maior são exibidos por último */
+            /* os elementos que possuem ordem menos são exibidos primeiro */
+            order: 1;
+            order: 0;
+            order: -1;
+
+            /*alinhando somente o próprio flex-item dentro do flex-container */
+            align-self: stretch; /* valor padrão, preenche todo conteúdo */
+            align-self: center;
+            align-self: flex-end;
+        }
+
+        .flex-container div {
+            width: 100px;
+
+            /*flex-grow faz com que os flex-items crescam/aumentem de tamanho para preencher totalmente
+            o tamanho/conteúdo do flex-container (divide o espaço vazio pela soma de todos flex-grow dos flex-items e multiplca o resultado pelo valor do flex-grow de cada item) */
+            /*quanto maior o número do flex-grow para determinado flex-item, mais ele vai crescer em relação aos outros */
+            /*se colocarmos 0, o elemento não vai crescer */
+            /*se colocarmos para todos flex-items 1, todos vão crescer de maneira igual */ 
+            flex-grow: 0;
+            flex-grow: 1;
+        }
+
+        .flex-container div:nth-child(1) {
+            flex-grow: 2;
+            background-color: violet;
+        }
+
+        .flex-container {
+            width: 300px;
+            /* funciona da mesma maneira que o flex-grow só que serve para encolher os elementos quando o tamanho
+            do flex-container for menor que o tamanho de todos flex-items, aí eles irão encolher mais ou menos dependendo do flex-shrink*/
+            flex-shrink: 1;
+        }
+        .flex-container div:nth-child(1) {
+            flex-shrink: 5; /*escolhe bem mais que os demais */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

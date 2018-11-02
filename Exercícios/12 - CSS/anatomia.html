@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        /*propriedades usam o dash-case (nomes separados por hífen) */
+        .seletor {
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+
+            /* multiplos valores */
+            border: solid 5px navy; /* shorthand property */
+            font-family: Helvetica, sans-serif;
+
+            /* funções */
+            width: calc(100% - 100px);
+            background-color: rgb(34, 153, 189);
+        }
+
+        /* Usando pseudo-classe (uma vez dois pontos) */
+        .seletor:hover {
+            background-color: orangered;
+        }
+
+        /* Usando pseudo-elemento (duas vezes dois pontos) */
+        /* Seleciona somente a primeira letra*/
+        .seletor::first-letter {
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        /* padrão de nomenclatura 
+            dash-case (melhor usar!!!)
+            camelCase 
+        */
+    </style>
+</head>
+
+<body>
+    <div class="seletor">Conteúdo</div>
+</body>
+
+</html>

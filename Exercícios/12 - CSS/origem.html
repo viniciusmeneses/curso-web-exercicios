@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Origem CSS: Externo, Interno e Inline</title>
+    <style>
+        /* No CSS a ordem de preferência dos estilos é a ordem em que foram processados */
+        /* Ou seja, o último estilo definido de cima pra baixo é usado */
+        body {
+            background-color: aquamarine;
+        }
+    </style>
+    <link rel="stylesheet" href="css/externo.css">
+</head>
+
+<!--Não é recomendado utilizar CSS inline diretamente na TAG-->
+<body style="background-color: brown;">
+    <h1>E agora?</h1>
+</body>
+
+</html>

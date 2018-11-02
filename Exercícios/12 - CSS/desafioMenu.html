@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            background-color: #e9e9e9;
+            font-family: 'Oswald', sans-serif;
+        }
+        .cabecalho {
+            box-sizing: content-box;
+            height: 80px;
+            background-color: #363636;
+            border-bottom: solid 4px brown;
+        }
+
+        .logo, .menu, .menu > ul, .menu li, .autenticacao {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+        }
+        .logo {
+            height: 80px;
+            padding: 15px;
+        }
+        .logo img {
+            height: 100%;
+        }
+
+        .menu-toggle {
+            float: right;
+            background-color: #303030;
+            border: solid 1px #8a8a8a;
+            border-radius: 5px;
+            padding: 10px 20px;
+            height: 40px;
+            color: #eee;
+            display: none;
+            margin: 20px;
+        }
+        .menu a, .autenticacao a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .menu a {
+            padding: 15px 12px;
+        }
+        .menu a:active, .menu a:hover, .menu a.selected {
+            color: #000;
+            background-color: rgb(211, 64, 64);
+        }
+        
+        .autenticacao {
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+        .botao {
+            padding: 5px 25px;
+            border-radius: 25px;
+            margin: 10px;
+        }
+        .destaque {
+            background-color: #bd3c3c;
+        }
+        .destaque:hover, .destaque:active {
+            background-color: #9c3232;
+        }
+
+        @media (max-width: 800px) {
+            .autenticacao {
+                display: none;
+            }
+        }
+        @media (max-width: 660px) {
+            .menu {
+                display: none;
+            }
+            .menu-toggle {
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        window.onhashchange = (e) => {
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`)
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`)
+            oldLink && oldLink.classList.remove('selected')
+            newLink && newLink.classList.add('selected')
+        }
+    </script>
+</body>
+
+</html>

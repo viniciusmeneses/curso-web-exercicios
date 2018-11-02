@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Altura e Largura</title>
+    <style>
+        body {
+            font-size: 40px;
+            background-color: coral;
+        }
+
+        div {
+            background-color: seagreen;
+        }
+
+        span {
+            background-color: dodgerblue;
+        }
+
+        span, div {
+            width: 50%;
+            height: 50%; /* não considerado pq é uma unidade relativa do elemento pai */
+            /* ou seja, 50% do body, mas a altura do body e da tag html não ocupa a altura toda da tela por padrão */
+            /* para resolver o problema, html e body teriam que ser explicitamente height: 100% */
+
+            height: 250px; /* funciona pois é uma unidade fixa e não relativa!!! */
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Título</div>
+    <span>Subtítulo</span>
+</body>
+
+</html>

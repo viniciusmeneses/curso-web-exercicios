@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #01</title>
+    <style>
+        /* https://caniuse.com/#feat=css-grid */
+        
+        html,
+        body {
+            margin: 20px;
+            height: calc(100% - 40px);
+            background-color: lightgray;
+        }
+        
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: solid 5px dodgerblue;
+            background: #fff;
+        }
+
+        body {
+            /* css grid é bidimensinal (possui linhas e colunas ao mesmo tempo) parecendo uma grade
+            o flex box é unidimensional (possui linhas OU colunas somente)
+            
+            nao precisamos definir a direção/layout no css grid*/
+            display: grid; /* para usar css grid */
+
+            grid-template-columns: 50% 50%; /* define a quantidade de colunas e o espaço que elas irão ocupar dentro da grid */
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%); /* repete o segundo parametro 4 vezes, criando 12 colunas de 8.33% de tamanho */
+            grid-template-columns: repeat(4, 8.33%); /* nao vai preencher os 100% */
+            grid-template-columns: repeat(11, 100px) 100px; /* agrupa o resultado do repeat mais o que está fora */
+            /* outra função: minmax(100px, 300px) */
+            grid-template-columns: 200px 20% 1fr; /* 1fr - 1 fragmento: vai pegar todo o resto que sobrou para preencher 100% */
+            grid-template-columns: 3fr 6fr 3fr; /*3 colunas - a do meio vai ser o dobro que as outras dos lados */
+
+            grid-template-rows: 50% 25% 12.5% 12.5%; /* organizando as linhas... */
+            /* como são 12 elementos e 3 colunas, teriam que ser 4 linhas para caber totalmente
+            então, a primeira linha vai ter 100px a segunda vai ser 1 fragmento (vai tentar pegar o máximo de espaço) e as linhas restantes
+            que teriam que existir vão ser colocadas com o espaço mínimo possivel: */
+            grid-template-rows: 100px 1fr;
+            grid-template-rows: 100px auto auto auto; /* pega as 3 linhas restantes e divide-as em tamanhos iguais */
+        }
+
+        .d8 {
+            /*define onde o elemento vai iniciar baseado no número da linha do eixo da coluna */
+            grid-column-start: 2;
+            grid-column-end: 4; /*o elemento vai até a linha 4 da coluna, fazendo como se fosse um colspan */
+            grid-column-end: span 2; /*use a linha atual MAIS 2 linhas */
+
+            grid-row-start: 3; /* vai da linha 3 do eixo da linha */
+            grid-row-end: 5; /* até a linha 5 do eixo da linha */
+            grid-row-end: span 2; /*span adiciona 2 linhas à linha start */
+        }
+
+        .d10, .d11 {
+            /* ACONTECENDO SOBREPOSIÇÃO DE ELEMENTOS NA GRID */
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 5;
+            grid-row-end: span 1;
+        }
+
+        .d10 {
+            /* z-index é a profundidade dos elementos, podendo alterar qual elemento vai ficar na frente de qual */
+            z-index: 10; /* d10 vai ficar na frente do d11 porque ele tem z-index maior que o d11 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+    <div class="d4">4</div>
+    <div class="d5">5</div>
+    <div class="d6">6</div>
+    <div class="d7">7</div>
+    <div class="d8">8</div>
+    <div class="d9">9</div>
+    <div class="d10">10</div>
+    <div class="d11">11</div>
+    <div class="d12">12</div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Media Query</title>
+    <style>
+        div {
+            font-size: 40px;
+            margin: 20px;
+            padding: 20px;
+            background-color: coral;
+            border: solid 5px;
+            display: none;
+        }
+
+        /* utilizamos media query para criar aplicações responsivas
+        e alterar a página de acordo com o critério entre parênteses */
+        @media (max-width: 600px) {
+            /* quando o comprimento for no máximo 600px,
+            vai aplicar display-block à classe muito-pequeno */
+            .muito-pequeno {
+                display: block;
+            }
+        }
+
+        /* se a comprimento for no máximo 1000px OU a orientação estivar no modo retrato.. */
+        @media (max-width: 1000px), (orientation: portrait) {
+            .pequeno-retrato {
+                display: block;
+            }
+        }
+
+        /* se o comprimento for no minimo 500px E no máximo 1000px (entre 500 e 1000 - intervalo) */
+        @media (min-width: 500px) and (max-width: 1000px) {
+
+        }
+    </style>
+</head>
+<body>
+    <div class="muito-pequeno">Muito Pequeno</div>
+    <div class="pequeno-retrato">Pequeno ou Retrato</div>
+    <div class="intervalo">Intervalo</div>
+</body>
+</html>
