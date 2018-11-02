@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Animação #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        body {
+            position: relative;
+            background-color: #999;
+            color: #000;
+        }
+
+        div {
+            position: absolute;
+            display: inline;
+            border: solid 10px #000;
+            padding: 50px;
+            font-size: 3em;
+            background-color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Animar!</div>
+
+    <script>
+        // function alterarLargura(valor, duracao, callback) {
+        //     // Recebe 3 parametros, primeira vai ser as propriedades que serao animadas
+        //     // 2 a duracao da animacao e a 3 a callback que vai ser chamada no fim da animacao
+        //     // += representa que a propriedade vai receber um outro valor
+        //     $('div').animate({ width: `+=${valor}` }, duracao, callback)
+        // }
+
+        // function moverDiagonal(valor, duracao, callback) {
+        //     $('div').animate({ top: `+=${valor}`, left: `+=${valor}` }, duracao, callback)
+        // }
+
+        // function girar(valor, duracao, callback) {
+        //     $('div').animate({ transform: `+=${valor}` }, {
+        //         step: function(valor) {
+        //             $(this).css('transform', `rotate(${valor}deg)`)
+        //         },
+        //         duration: duracao,
+        //         complete: callback,
+        //         easing: 'linear'
+        //     })
+        // }
+
+        // alterarLargura(300, 500, () => {
+        //     alterarLargura(-300, 'slow', () => {
+        //         moverDiagonal(300, 600, () => {
+        //             girar(3300, 3000)
+        //         })
+        //     })
+        // })
+
+        function alterarLargura(valor, duracao) {
+            return new Promise(resolve => {
+                $('div').animate({ width: `+=${valor}` }, duracao, resolve)
+            })
+        }
+
+        function moverDiagonal(valor, duracao) {
+            return new Promise (resolve => {
+                $('div').animate({ top: `+=${valor}`, left: `+=${valor}` }, duracao, resolve)
+            })
+        }
+
+        function girar(valor, duracao) {
+            return new Promise(resolve => {
+                $('div').animate({ transform: `+=${valor}` }, {
+                    step: function(valor) {
+                        $(this).css('transform', `rotate(${valor}deg)`)
+                    },
+                    duration: duracao,
+                    complete: resolve,
+                    easing: 'linear'
+                })
+            })
+        }
+
+        Promise.all([
+            alterarLargura(300, 2000),
+            alterarLargura(-300, 'slow'),
+            moverDiagonal(300, 600),
+            girar(3300, 3000)
+        ]).then(() => console.log('Concluído!'))
+    </script>
+</body>

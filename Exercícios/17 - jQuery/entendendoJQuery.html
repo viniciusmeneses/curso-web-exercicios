@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        //Trabalha automaticamente com o conjunto de elementos selecionados
+        //Podemos facilmente encadear métodos
+        $('div').hide(3000).show(2000).fadeOut(1000)
+        console.log($('div').get(0))
+
+        console.log($.isEmptyObject({nome: null}))
+        console.log(jQuery.inArray(3, [2, 3, 1]))
+
+        //Implementando uma função aos objetos da dom seleciondos a partir do JQuery
+        $.fn.fundoVerde = function() {
+            //this referencia os elementos selecionados
+            this.css('background-color', 'green')
+            return this
+        }
+        $('body').fundoVerde().fadeOut(1000)
+    </script>
+</body>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #01</h1>
+    <div id='posicao'></div>
+    <div id='cliques'>Cliques: 0</div>
+    <input type="text" placeholder="Cor de Background">
+
+    <script>
+        function mostrarPosicaoMouse (e) {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+
+        // .on() é um método para adicionar eventos ao elemento
+        // o primeiro parametro é o nome do evento e o segundo a função
+        // de callback a ser executada
+        $('body').on('mousemove', mostrarPosicaoMouse)
+
+        // Atribuindo um evento diretamente com a função dele
+        // Sem precisar passar o nome usando o on
+        $('#posicao').mouseover(e => {
+            // Remove o evento do elemento
+            // Precisa ser passada a função de callback usada na função
+            $('body').off('mousemove', mostrarPosicaoMouse)
+        })
+
+        $('#posicao').mouseleave(e => {
+            $('body').on('mousemove', mostrarPosicaoMouse)
+            // $('body').mousemove(mostrarPosicaoMouse)
+        })
+
+
+
+        let cliques = 0
+        $('body').click(e => {
+            $('#cliques').html(`Cliques: ${++cliques}`)
+        })
+        
+
+        
+        // Retorna o valor da propriedade background-color
+        const backgroundOriginal = $('body').css('background-color')
+
+        // Os eventos keydown e keypress vão retornar o valor do input (e.target.value)
+        // antigo antes de ser pressionada a tecla
+        // Já o keyup, vai ser retornado o valor atualizado como está na caixa
+        $('input').keyup(function(e) {
+            // .val() retorna o valor do elemento/input (value)
+            const valor = $(this).val()
+            if (valor.match(/#[\da-fA-f]{6}/)) {
+                $('body').css('background-color', valor)
+            }
+            else {
+                $('body').css('background-color', backgroundOriginal)
+            }
+        })
+    </script>
+</body>
