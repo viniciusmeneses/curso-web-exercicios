@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        const item = document.querySelector('div')
+        //deixa a div com position absolute
+        item.style.position = 'absolute'
+
+        item.onmousemove = e => {
+            //e.target - quem disparou o evento
+            const item = e.target
+            //troca o cursor quando o mouse estiver em cima da div
+            item.style.cursor = 'move'
+
+            //se algum botão do mouse estiver clicado - vai ser maior que 1
+            //se não vai ser 0
+            if (e.buttons) {
+                //a distancia entre o top da pagina e a div vai ser:
+                    // a posição Y atual do mouse menos a altura da div dividida por 2
+                    // (divide por 2 para ficar bem no centro)
+                item.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                item.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+            }
+        }
+    </script>
+</body>

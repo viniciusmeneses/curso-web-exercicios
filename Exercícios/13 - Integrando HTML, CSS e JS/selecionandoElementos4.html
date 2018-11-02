@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log() {
+            console.log(this)
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log() /* retorna o elemento pai */
+        lista.childNodes.log() /* retorna os elementos filhos (contando textos e tabulação) */
+
+
+        // NESSAS PROPRIEDADES ESPAÇOS E TABULAÇÃO SAO CONTADOS COMO ELEMENTOS
+        const primeiro = lista.firstChild /*pega o primeiro elemento filho*/
+        primeiro.log()
+        primeiro.nextSibling.log() /*pega o próximo elemento que é irmão do atual */
+
+        const ultimo = lista.lastChild
+        ultimo.log()
+        ultimo.previousSibling.log() //elemento anterior ao atual que é irmão
+
+
+        // RETORNA SOMENTE ELEMENTOS HTML!!!
+        lista.children.log() //pega todos os filhos
+        lista.firstElementChild.log()
+        lista.lastElementChild.log()
+        lista.parentNode.previousElementSibling.log() //pega o irmão anterior do pai
+        lista.parentNode.nextElementSibling.log()
+
+        document.querySelectorAll('div ul li').log()
+    </script>
+</body>
+
+</html>

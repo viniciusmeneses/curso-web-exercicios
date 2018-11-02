@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+
+    <div>
+        <!-- Melhor não usar!!!
+        FICA DIFICIL DE ALTERAR
+        onclick="navegarEm5s(event)" -->
+        <a href="https://google.com.br" esperar-5s>Google</a>
+    </div>
+    <script>
+        function navegarEm5s(e) {
+            e.preventDefault()
+            console.log('Saindo em 5 segundos...')
+            setTimeout(() => {
+                // e.target é o elemento que disparou o evento
+                const link = e.target
+                // window.location.href substitui a url do browser
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        // Mais dificil de ver que o elemento está sendo manipulado por JS
+        // porque na tag não tem nada indicando
+        // const a = document.querySelector('a')
+        // a.onclick = navegarEm5s
+
+        // Usar atributos personalizados para indicar que será manipulado por JS
+        const a = document.querySelector('[esperar-5s]')
+        a.onclick = navegarEm5s
+    </script>
+</body>
