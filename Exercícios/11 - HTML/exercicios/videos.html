@@ -1,0 +1,85 @@
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+    /* div dentro da classe progresso */
+    .progresso > div {
+        background-color: rgb(82, 194, 82);
+        height: 100%;
+        width: 0%;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+    }
+</style>
+
+<!-- propriedade controls habilita os botões de de controle do vídeo (pausar, volume, etc..) -->
+<!-- autoplay: ao carregar o video, vai iniciar automaticamente -->
+<!-- controlsList="nodownload" retira o botão de download da barra de controles -->
+
+<video id="meuVideo" width="600" controls autoplay controlsList="nodownload">
+    <!--Se o browser nao suportar o video em formato mp4, vai para a próxima fonte/source-->
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta vídeos!
+</video>
+
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<script>
+    const progressBars = document.querySelectorAll('[wm-progresso] > div')
+    const playButtons = document.querySelectorAll('[wm-play]')
+    const pauseButtons = document.querySelectorAll('[wm-pause]')
+
+    function buildSelectorStr(el, attr) {
+        return `[id="${el.getAttribute(attr)}"`
+    }
+    function buildBarStr(video) {
+        return `${((video.currentTime / video.duration) * 100).toFixed(1)}%`
+    }
+    function getVideo(el, attr) {
+        return document.querySelector(buildSelectorStr(el, attr))
+    }
+    function addPlayEvent() {
+        playButtons.forEach(button => {
+            const video = getVideo(button, 'wm-play')
+            button.onclick = () => {
+                video.play()
+            }
+        })
+    }
+    function addPauseEvent() {
+        pauseButtons.forEach(button => {
+            const video = getVideo(button, 'wm-pause')
+            button.onclick = () => {
+                video.pause()
+            }
+        })
+    }
+    function addProgressEvent() {
+        progressBars.forEach(bar => {
+            const video = getVideo(bar.parentNode, 'wm-progresso')
+            video.ontimeupdate = () => {
+                const barStr = buildBarStr(video)
+                bar.style.width = barStr
+                bar.innerHTML = barStr
+            }
+        })
+    }
+    function startEvents() {
+        addPlayEvent()
+        addPauseEvent()
+        addProgressEvent()
+    }
+
+    startEvents()
+</script>

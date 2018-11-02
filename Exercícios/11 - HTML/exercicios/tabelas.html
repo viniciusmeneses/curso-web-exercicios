@@ -1,0 +1,54 @@
+<style>
+    table {
+        /* borda mais fina/sem borda */
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+    }
+    /* tr dentro do thead */
+    thead tr {
+        border-bottom: 2px solid #440;
+    }
+    /* tr dentro do tbody quando o mouse passar em cima */
+    tbody tr:hover {
+        background: #ececec;
+    }
+    tfoot {
+        background-color: #444;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>
+
+<table>
+    <caption>Produtos</caption> <!--Titulo-->
+    <thead> <!--Header-->
+        <tr> <!--Linha-->
+            <th>Produto</th> <!--Coluna Titulo-->
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody> <!--Conteúdo-->
+        <tr>
+            <td>iPad</td> <!--Coluna Normal-->
+            <td>3000</td>
+            <td>5</td>
+            <td>15000</td>
+        </tr>
+        <tr>
+            <td>Samsung S9</td>
+            <td>2000</td>
+            <td>8</td>
+            <td>16000</td>
+        </tr>
+    </tbody>
+    <tfoot> <!--Rodapé-->
+        <tr>
+            <td colspan="3">Total</td>
+            <td>31000</td>
+        </tr>
+    </tfoot>
+</table>

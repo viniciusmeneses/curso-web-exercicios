@@ -1,0 +1,52 @@
+<style>
+    input,
+    textarea,
+    select {
+        display: block;
+        margin-bottom: 10px;
+    }
+    input[type=radio], input[type=checkbox] {
+        display: inline;
+    }
+</style>
+
+<h1>Formulário</h1>
+
+<!-- Envia os dados via POST para a url do action -->
+<form method="POST">
+    <!--Input escondido, geralmente é usado para não mostrar o ID do usuario...-->
+    <input type="hidden" name="id" value="3">
+
+    <!-- O atributo nome vai ser o nome da chave do objeto no req.body -->
+    <input type="text" name="nome">
+    <input type="password" name="senha">
+    <textarea name="bio" cols="30" rows="10"></textarea>
+    <div>
+        <input type="radio" name="tipo" value="admin"> Admin
+        <input type="radio" name="tipo" value="regular"> Regular
+        <input type="radio" name="tipo" value="professor"> Professor
+    </div>
+    <div>
+        <input type="checkbox" name="ativo"> Ativo
+    </div>
+    <select name="estado">
+        <option value="">Selecione</option>
+        <option value="ac">Acre</option>
+        <option value="ba">Bahia</option>
+        <option value="ce">Ceará</option>
+    </select>
+
+    <select name="interesses" multiple size="7">
+        <option value="js">Javascript</option>
+        <option value="java">Java</option>
+        <option value="php">PHP</option>
+        <option value="python">Python</option>
+        <option value="go">Go</option>
+        <option value="c">C</option>
+    </select>
+
+    <!--Setar um action e método diferente para cada botão dentro do form quando for clicado-->
+    <!--Ou setar um action e metodo no form inteiro na tag <form>-->
+    <button formaction="http://localhost:3003/usuarios">Incluir</button>
+    <button formaction="http://localhost:3003/usuarios/3">Alterar</button>
+</form>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercícios HTML</title>
+    <style>
+        #conteudo {
+            padding: 30px 0px
+        }
+        a {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>Exercícios HTML</header>
+    <nav id="menu"></nav>
+    <section id="conteudo"></section>
+    <footer>
+        Curso de Web Moderno
+    </footer>
+
+    <script>
+        const nav = document.getElementById('menu')
+        const conteudo = document.getElementById('conteudo')
+
+        fetch('listaExercicios.json')
+            .then(resp => resp.text())
+            .then(json => JSON.parse(json))
+            .then(lista => lista.forEach(([ exercicio, url ]) => {
+                const newAnchor = document.createElement('a')
+                newAnchor.textContent = exercicio
+                newAnchor.href = url
+                addClickEvent(newAnchor)
+                nav.appendChild(newAnchor)
+            }))
+
+        function addClickEvent(el) {
+            el.onclick = function(e) {
+                e.preventDefault()
+                //fetch - maneira mais fácil e atualizada de fazer requisições ajax com JS puro
+                //assim, não precisamos utilizar o XMLHttpRequest, podemos usar o fetch
+                //fetch é uma promise
+                fetch(el.href)
+                    //o método text() retorna outra promise com o valor textul do arquivo
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+    .circular {
+        width: 513px;
+        background-color: #444;
+    }
+    .texto {
+        width: 400px;
+    }
+    .texto img {
+        margin-right: 10px;
+    }
+    .cidade {
+        width: 513px;
+        height: 342px;
+        /* adicionando uma imagem ao background de uma classe */
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        /* posição da imagem */
+        background-position: center;
+        /* define se vai repetir ou não para preencher os espacos */
+        background-repeat: no-repeat;
+        /* zoom do background */
+        background-size: 200%;
+    }
+    body {
+        overflow-x: hidden;
+    }
+</style>
+
+<div wm-slider>
+    <p>
+        <!-- atributo alt vai aparecer quando a imagem não for carregada -->
+        <!-- atributo title vai aparecer quando coloca o mouse em cima da imagem -->
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+            alt="Muro da Cidade" width="513" height="342" title="Muro da Cidade por Tarso Bessa">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif"
+            alt="Intro Cod3r" height="342">
+    </p>
+    
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+            alt="Rio de Janeiro" height="342">
+    </p>
+    
+    <p class="texto">
+        <!-- align alinha a imagem em uma posição de acordo com o texto e o texto envolve a imagem-->
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg"
+            alt="Avatar" height="50" align="left">
+        Texto AHSUAH UAHSUAH UHASHSUAHSU HAUSH UAHSUAH IDFUHSIAUHDAS UHDSA
+        dsadhush duashuid huydy gsyuagd ygsaduy agsduygyu gduyagsydgaysgdsa
+        dsadhaudsaugdyu asudguyasgydgsayudgu ysgauydg uyasgduygsayudguysad
+    </p>
+    
+    <p class="cidade"></p>
+    
+    <p>
+        <!--Através da tag picture podemos colocar várias fontes de imagens que irão aparecer conforme a propriedade media-->
+        <!--Forma condicional de mostrar imagens através da propriedade media query-->
+        <picture>
+            <!--Se o tamanho da tela for no minimo 600px de comprimento, exibe essa imagem-->
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width: 600px)">
+        
+                <!--Se nenhuma das media query das sources forem `true` então mostra a ultima imagem padrão com tag <img>-->
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+        </picture>
+    </p>
+</div>
+
+<script>
+    // Array.from(arr) converte o array-like em Array normal
+    const elements = Array.from(document.querySelectorAll('p'))
+    let index = 0
+
+    function changeDisplay(el, value) {
+        el.style.display = value
+    }
+    function changeLeftOffset(el, value) {
+        el.style.left = `${value}px`
+    }
+    function moveElement(el) {
+        // el.clientWidth comprimento do elemento
+        let x = -el.clientWidth - 100
+        let timer = setInterval(() => {
+            changeLeftOffset(el, x)
+            x += 5
+            // window.innerWidth é o comprimento da tela
+            if (x >= window.innerWidth + 100) {
+                clearInterval(timer)
+                index++
+                changeDisplay(el, 'none')
+                nextElement()
+            }
+        }, 20)
+    }
+    function nextElement() {
+        if (index === elements.length) {
+            index = 0
+        }
+        changeLeftOffset(elements[index], -elements[index].clientWidth - 100)
+        changeDisplay(elements[index], 'block')
+        moveElement(elements[index])
+    }
+
+    nextElement()
+
+    /* SOLUÇÃO DO VÍDEO:
+    function mover(elem, inicio, fim, passo, callback) {
+        const novoInicio = inicio - passo
+        if(novoInicio >= fim) {
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        } else {
+            callback()
+        }
+    }
+    function slider() {
+        const elementos = document.querySelectorAll('[wm-slider] > p')
+        const slides = Array.from(elementos)
+        exibirSlide(slides, slides[0])
+    }
+    function exibirSlide(slides, slide) {
+        slide.style.display = 'block'
+        const inicio = innerWidth
+        const fim = -slide.clientWidth
+        slide.style.left = `${inicio}px`
+        mover(slide, inicio, fim, 5, () => {
+            slide.style.display = 'none'
+            exibirSlide(slides, getProximo(slides, slide))
+        })
+    }
+    function getProximo(lista, atual) {
+        const i = lista.indexOf(atual) + 1
+        return i < lista.length ? lista[i] : lista[0]
+    }
+    slider()
+    */
+</script>

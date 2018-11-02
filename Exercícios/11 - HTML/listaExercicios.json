@@ -1,0 +1,12 @@
+[
+    [ "01 - Texto 1", "exercicios/texto1.html" ],
+    [ "02 - Texto 2", "exercicios/texto2.html" ],
+    [ "03 - Listas", "exercicios/listas.html" ],
+    [ "04 - Lista Aninhada", "exercicios/listaAninhada.html"],
+    [ "05 - Links", "exercicios/links.html"],
+    [ "06 - Tabelas", "exercicios/tabelas.html"],
+    [ "07 - Formulário", "exercicios/form/form.html"],
+    [ "08 - Imagens", "exercicios/imagens.html"],
+    [ "09 - Videos", "exercicios/videos.html"],
+    [ "10 - Tags Não Visuais", "exercicios/tagsNaoVisuais.html"]
+]

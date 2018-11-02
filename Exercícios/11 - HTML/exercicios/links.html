@@ -1,0 +1,31 @@
+<h1 id="inicio">Links</h1>
+
+<!-- URL Absoluta (tem que ter HTTP://) -->
+<a href="http://google.com.br">Google 1</a>
+<a href="http://google.com.br" target="_blank">Google 2</a>
+
+<!-- URL Relativa (ELE SE BASEIA NA URL ATUAL) -->
+<a href="index.html">Voltar 1</a> <!-- Pasta atual -->
+<a href="/index.html">Voltar 2</a> <!-- /xxx.html -  Acessa a pasta raíz da aplicação -->
+<a href="../index.html">Voltar 3</a> <!-- Sai de uma pasta -->
+
+<!-- Link Abrir Email -->
+<a href="mailto:email@empresa.com.br">Entre em contato!</a><br>
+
+<!-- Criar elementos de modo mais rápido
+    div#noticia
+    div.classe.outraClasse
+    header#topo
+    ...
+-->
+
+<div id="noticia" style="position: absolute; top: 2000px">
+    <h1>Notícia Louca!</h1>
+    <p>Não era nada de mais...</p>
+    <a href="#inicio">Subir!</a>
+</div>
+
+<!-- Ir até outros elementos pelo id (âncora) -->
+<a href="#noticia">Ir para notícia</a>
+
+<!--http://teste.com/index.html#noticia - #noticia não vai para o back-end-->
