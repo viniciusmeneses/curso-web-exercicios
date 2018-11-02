@@ -1,0 +1,13 @@
+O webpack é um processador de módulos/arquivos parecido com o Gulp.
+Ele funciona de maneira diferente que o Gulp (selecionamos os arquivos nas tasks e fazemos as operaçoes neles)
+
+No webpack, definimos qual é o arquivo de entrada, onde nesse arquivo vai referenciar todos os outros (importar)
+A partir desse arquivo o webpack vai navegar entre todos os outros módulos (import e export)
+
+Quando todos os modulos forem navegados, eles serão passados para os Loaders,
+que vão processar esses módulos baseado em sua extensão, gerando no final os arquivos estáticos que rodam no navegador
+
+
+O webpack é baseado no sistema de modulos do EcmaScript e consegue interpretá-lo normalmente
+O webpack pode ser rodado a partir do comando 'webpack' (dentro do npm scripts) e possui o arquivo 'webpack.config.js' como configuraçao
+O webpack automaticamente joga os arquivos processados dentro de uma pasta `dist`
