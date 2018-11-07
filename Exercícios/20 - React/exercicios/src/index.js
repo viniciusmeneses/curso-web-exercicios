@@ -3,7 +3,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 // Importando o componente criado
-import Primeiro from './components/Primeiro'
+// O NOME DO COMPONENTE DEVE OBRIGATORIAMENTE COMEÇAR COM LETRA MAIÚSCULA
+// import Primeiro from './components/Primeiro'
+
+// import BomDia from './components/BomDia'
+
+// import Multi, { BoaNoite } from './components/Multiplos'
+// import { BoaTarde, BoaNoite } from './components/Multiplos'
+
+
+import Saudacao from './components/Saudacao'
 
 
 // <h1>React 2</h1> - É um código em JSX que será feito o transpile para JS puro para funcionar no browser
@@ -15,4 +24,17 @@ import Primeiro from './components/Primeiro'
 // Passando o componente e o elemento em que ele vai ser inserido dentro
 
 // O componente importado pode ser acessado com JSX utilizando como se fosse tag HTML
-ReactDOM.render(<Primeiro />, document.getElementById('root'))
+// ReactDOM.render(<BomDia nome="Vinicius" idade={17} />, document.getElementById('root'))
+
+// ReactDOM.render(
+//   <div>
+//     <Multi.BoaTarde nome="Vinicius"/>
+//     <BoaNoite nome="Nicole"/>
+//   </div>
+// , document.getElementById('root'))
+
+ReactDOM.render(
+  <div>
+    <Saudacao tipo="Bom dia" nome="Nicole"/>
+  </div>
+, document.getElementById('root'))
