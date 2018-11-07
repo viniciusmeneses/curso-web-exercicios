@@ -12,7 +12,9 @@ import ReactDOM from 'react-dom'
 // import { BoaTarde, BoaNoite } from './components/Multiplos'
 
 
-import Saudacao from './components/Saudacao'
+// import Saudacao from './components/Saudacao'
+import Pai from './components/Pai'
+import Filho from './components/Filho'
 
 
 // <h1>React 2</h1> - É um código em JSX que será feito o transpile para JS puro para funcionar no browser
@@ -35,6 +37,10 @@ import Saudacao from './components/Saudacao'
 
 ReactDOM.render(
   <div>
-    <Saudacao tipo="Bom dia" nome="Nicole"/>
+    <Pai nome="Paulo" sobrenome="Silva">
+      {/* Passando os filhos diretamente dentro do componente pai */}
+      <Filho nome="Pedro"/>
+      <Filho nome="Nicole"/>
+    </Pai>
   </div>
 , document.getElementById('root'))
