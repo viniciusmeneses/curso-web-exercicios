@@ -8,6 +8,7 @@
     "prod": "pm2 start index.js --name appx-backend"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "pm2": "^3.2.2"
   },
